@@ -1,0 +1,1329 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JelantahGo — Jemput & Beli Minyak Jelantah | Bayar Tunai & Transparan</title>
+  <meta name="description" content="JelantahGo jemput minyak jelantah ke lokasi Anda, harga transparan per liter, pembayaran cepat. Daftar mitra, cek harga instan, dan ikut program daur ulang untuk biodiesel." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="JelantahGo — Jemput & Beli Minyak Jelantah" />
+  <meta property="og:description" content="Jemput minyak jelantah ke lokasi Anda. Harga transparan per liter. Pembayaran instan. Daftar mitra & cek harga instan." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-jelantahgo.jpg" />
+
+  <link rel="icon" href="/assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #071022;
+      --panel: #0f1724;
+      --muted: #9aa6b2;
+      --text: #e6eef6;
+      --accent: #16d07a;
+      --accent-2: #0ea5a4;
+      --accent-dark: #0c9e6d;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.04);
+      --card-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+      --glass-glow: 0 6px 30px rgba(22, 208, 122, 0.12);
+      --max-width: 1200px;
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background: linear-gradient(180deg, #04101a 0%, var(--bg) 100%);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Improved Top Bar */
+    .top-bar {
+      background: linear-gradient(90deg, rgba(22, 208, 122, 0.08), rgba(14, 165, 164, 0.04));
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar-contact {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .top-bar-contact span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Header & Navigation */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 16, 34, 0.9);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 800;
+      color: #021014;
+      box-shadow: 0 6px 18px rgba(10, 120, 80, 0.18);
+    }
+
+    .brand-text h1 {
+      font-size: 1.4rem;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-text p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 5px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: var(--text);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #021014;
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: var(--glass-glow);
+      transition: var(--transition);
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(22, 208, 122, 0.2);
+    }
+
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background-color: var(--text);
+      border-radius: 5px;
+      transition: var(--transition);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content {
+      padding-right: 20px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(22, 208, 122, 0.1);
+      padding: 6px 14px;
+      border-radius: 999px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin: 0 0 18px;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0 0 22px;
+      max-width: 90%;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #021014;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(22, 208, 122, 0.25);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-kpis {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .kpi {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      min-width: 120px;
+      transition: var(--transition);
+    }
+
+    .kpi:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow);
+    }
+
+    .kpi .num {
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    .kpi .label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-illustration {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .illustration-img {
+      width: 100%;
+      height: 320px;
+      border-radius: var(--border-radius);
+      background: linear-gradient(135deg, #08202a, #0d1220);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 16px;
+      border: 1px dashed rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .illustration-img::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(22, 208, 122, 0.05), rgba(14, 165, 164, 0.05));
+      opacity: 0.5;
+    }
+
+    .illustration-footer {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .illustration-footer div:first-child {
+      color: var(--muted);
+    }
+
+    .illustration-footer div:last-child {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Section Styling */
+    .section {
+      margin: 60px 0;
+    }
+
+    .section-header {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin: 0 0 12px;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1.1rem;
+      max-width: 800px;
+    }
+
+    /* Card Styles */
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      padding: 24px;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(2, 6, 23, 0.7);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* Pricing Table */
+    .pricing-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: transparent;
+      color: var(--text);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+      font-weight: 600;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    tbody tr:hover td {
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    /* Affiliate Section */
+    .affiliate {
+      background: linear-gradient(135deg, rgba(22, 208, 122, 0.08), rgba(14, 165, 164, 0.03));
+      border: 1px solid rgba(22, 208, 122, 0.1);
+      padding: 24px;
+      border-radius: var(--border-radius);
+    }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      font-weight: 800;
+      color: var(--accent);
+      width: 30px;
+      height: 30px;
+      background: rgba(22, 208, 122, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Dashboard Features */
+    .dashboard-features {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .feature-item i {
+      color: var(--accent);
+    }
+
+    /* ROI Calculator */
+    .roi-calculator {
+      margin-top: 15px;
+    }
+
+    .roi-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .roi-row input {
+      flex: 1;
+      padding: 12px;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .roi-row input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .roi-result {
+      margin-top: 12px;
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 1.1rem;
+      padding: 10px;
+      background: rgba(22, 208, 122, 0.08);
+      border-radius: var(--border-radius);
+    }
+
+    /* Map & Coverage */
+    .map-placeholder {
+      height: 160px;
+      border-radius: var(--border-radius);
+      border: 1px dashed rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* FAQ & Resources */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .resource-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .resource-card {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: var(--transition);
+    }
+
+    .resource-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-3px);
+    }
+
+    .resource-card strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .resource-card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      margin-top: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .faq-answer {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px 0 60px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      margin-top: 80px;
+    }
+
+    .footer-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      min-width: 220px;
+    }
+
+    .footer-brand img {
+      height: 44px;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      max-width: 320px;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-column h4 {
+      margin: 0 0 15px;
+      color: var(--text);
+      font-size: 1.1rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      padding-top: 20px;
+    }
+
+    .footer-bottom .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 18px;
+    }
+
+    /* Floating CTA */
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #021014;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 12px 40px rgba(22, 208, 122, 0.2);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .floating-wa:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 45px rgba(22, 208, 122, 0.3);
+    }
+
+    .floating-wa small {
+      display: block;
+      font-weight: 700;
+      color: #021014;
+      opacity: 0.95;
+      font-size: 0.75rem;
+    }
+
+    /* Sticky Mobile Actions */
+    .sticky-actions {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, #06121b, #051018);
+      padding: 12px 15px;
+      gap: 12px;
+      justify-content: center;
+      z-index: 200;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .illustration-img {
+        height: 260px;
+      }
+      
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .pricing-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar .container {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+      
+      .top-bar-contact {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .menu-toggle {
+        display: flex;
+      }
+      
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--panel);
+        flex-direction: column;
+        padding: 20px;
+        gap: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      nav ul.active {
+        display: flex;
+      }
+      
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+      
+      .hero-content {
+        padding-right: 0;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-sub {
+        max-width: 100%;
+      }
+      
+      .hero-actions {
+        justify-content: center;
+      }
+      
+      .hero-illustration {
+        order: 2;
+      }
+      
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      
+      .floating-wa {
+        right: 16px;
+        bottom: 16px;
+        padding: 12px 18px;
+      }
+      
+      .sticky-actions {
+        display: flex;
+      }
+      
+      .footer-grid {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .footer-bottom .container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .illustration-img {
+        height: 200px;
+      }
+      
+      .hero-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .resource-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .floating-wa {
+        bottom: 70px;
+        right: 10px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .floating-wa small {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-contact">
+        <span><i class="fas fa-phone-alt"></i> 085183033995</span>
+        <span><i class="fas fa-envelope"></i> info.jelantahgo@gmail.com</span>
+      </div>
+      <div>Melayani Jabodetabek & Kota Besar — 24/7</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo-circle">JG</div>
+        <div class="brand-text">
+          <h1>JelantahGo</h1>
+          <p>Pengepul Minyak Jelantah Terpercaya</p>
+        </div>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav aria-label="Main navigation">
+        <ul id="nav-menu">
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#pricing">Harga</a></li>
+          <li><a href="#affiliate">Afiliasi</a></li>
+          <li><a href="#kontak" class="cta">Hubungi Sekarang</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main>
+      <section class="hero" id="beranda">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="hero-eyebrow"><i class="fas fa-bolt"></i> Jemput & Bayar Tunai • Ramah Lingkungan</span>
+            <h2 class="hero-title">Jual Minyak Jelantahmu — Cepat, Aman, & Bernilai</h2>
+            <p class="hero-sub">Kami jemput ke lokasi, verifikasi di tempat, dan bayar tunai. Bergabung sebagai mitra atau gunakan program afiliasi untuk penghasilan tambahan Rp200/L.</p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://wa.me/6285183033995?text=Saya%20ingin%20pesan%20jemput%20jelantah">
+                <i class="fab fa-whatsapp"></i> WhatsApp Sekarang
+              </a>
+              <a class="btn btn-ghost" href="#pricing">
+                <i class="fas fa-tag"></i> Lihat Harga & Paket
+              </a>
+            </div>
+
+            <div class="hero-kpis">
+              <div class="kpi">
+                <div class="num">500+</div>
+                <div class="label">Restoran</div>
+              </div>
+              <div class="kpi">
+                <div class="num">200+</div>
+                <div class="label">Hotel</div>
+              </div>
+              <div class="kpi">
+                <div class="num">1000+</div>
+                <div class="label">Rumah Tangga</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-illustration">
+            <div class="illustration-img">
+              <div><i class="fas fa-oil-can" style="font-size: 3rem; opacity: 0.3;"></i></div>
+            </div>
+
+            <div class="illustration-footer">
+              <div>Layanan cepat • Verifikasi di lokasi • Pembayaran instan</div>
+              <div>Harga terbaik 2025</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PRICING & AFFILIATE SECTION -->
+      <section class="section" id="pricing">
+        <div class="section-header">
+          <h2 class="section-title">Harga Minyak Jelantah 2025</h2>
+          <p class="section-subtitle">Skala volume mempengaruhi harga — semakin banyak, semakin tinggi harga per liter.</p>
+        </div>
+
+        <div class="pricing-container">
+          <div class="card">
+            <h3 style="margin: 0 0 15px;">Tabel Harga per Liter</h3>
+            <table aria-label="Tabel Harga">
+              <thead>
+                <tr>
+                  <th>Volume</th>
+                  <th>Harga per Liter</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>40 - 99 Liter</td>
+                  <td>Rp 6.000</td>
+                </tr>
+                <tr>
+                  <td>100 - 199 Liter</td>
+                  <td>Rp 6.500</td>
+                </tr>
+                <tr>
+                  <td>>= 200 Liter</td>
+                  <td>Rp 7.000</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top: 14px; font-size: 0.9rem; color: var(--muted);">
+              <i class="fas fa-info-circle"></i> Minimal 40 Liter untuk penjemputan. Harga sudah termasuk biaya jemput dan penanganan. Harga final ditentukan setelah verifikasi sampel di lokasi.
+            </div>
+          </div>
+
+          <div>
+            <div class="card affiliate" id="affiliate">
+              <h3 style="margin: 0 0 10px;">Program Afiliasi — Member Get Member</h3>
+              <p style="margin: 0 0 15px; color: var(--muted);">
+                Dapatkan <strong style="color: var(--accent);">Rp200 / L</strong> untuk setiap liter yang disetorkan oleh rujukanmu. Pembayaran otomatis tiap bulan.
+              </p>
+
+              <div class="step-list">
+                <div class="step-item">
+                  <div class="step-number">1</div>
+                  <div style="color: var(--muted);">Bagikan link referral unik ke restoran & tetangga.</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">2</div>
+                  <div style="color: var(--muted);">Setoran otomatis tercatat di dashboard mitra.</div>
+                </div>
+                <div class="step-item">
+                  <div class="step-number">3</div>
+                  <div style="color: var(--muted);">Komisi dibayarkan setiap akhir bulan.</div>
+                </div>
+              </div>
+
+              <div class="dashboard-features">
+                <p style="margin: 0 0 12px; font-weight: 700; color: var(--accent);">Maksimalkan penghasilanmu dengan dashboard Mitra JelantahGO yang super mudah digunakan!</p>
+                <p style="margin: 0 0 15px; color: var(--muted);">Di dashboard ini, kamu bisa:</p>
+                
+                <div class="feature-list">
+                  <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Melacak setiap jemputan secara real-time</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Memantau laporan pembayaran tanpa ribet</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Mengatur jadwal aktivitas mitra dengan cepat dan praktis</span>
+                  </div>
+                </div>
+                
+                <p style="margin: 15px 0 0; color: var(--muted); font-style: italic;">Semua tercatat otomatis, sehingga kamu bisa fokus membangun jaringan dan menikmati kemudahan mengelola aktivitas</p>
+              </div>
+
+              <div style="text-align: center; margin-top: 20px;">
+                <a class="cta" href="#affiliate"><i class="fas fa-link"></i> Buat Link Referral</a>
+              </div>
+            </div>
+
+            <div style="height: 20px;"></div>
+
+            <div class="card">
+              <h4 style="margin: 0 0 10px;">Cek Estimasi Pendapatan</h4>
+              <div style="font-size: 0.9rem; color: var(--muted); margin-bottom: 15px;">
+                Masukkan jumlah liter untuk estimasi pendapatan (termasuk komisi afiliasi bila ada).
+              </div>
+
+              <div class="roi-calculator">
+                <div class="roi-row">
+                  <input id="roiLiters" type="number" min="40" placeholder="Minimal 40 liter (contoh: 120)" />
+                  <button id="roiBtn" class="btn btn-primary" style="padding: 10px 16px;">Hitung</button>
+                </div>
+                <div id="roiResult" class="roi-result" role="status" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CRITERIA & COVERAGE SECTION -->
+      <section class="section" id="criteria">
+        <div class="card">
+          <h3 style="margin: 0 0 15px;">Kriteria Penerimaan Minyak Jelantah</h3>
+          <div class="grid-2" style="gap: 20px; margin-top: 15px;">
+            <div>
+              <strong>Spesifikasi Teknis</strong>
+              <ul style="color: var(--muted); margin-top: 10px; padding-left: 20px;">
+                <li>Free Fatty Acid (FFA) &lt; 5%</li>
+                <li>Moisture & Impurities &lt; 2%</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Kriteria Umum</strong>
+              <ul style="color: var(--muted); margin-top: 10px; padding-left: 20px;">
+                <li>✅ Hasil goreng makanan (minyak bekas)</li>
+                <li>✅ Sudah disaring dan tidak tercampur air</li>
+                <li>❌ Tidak menerima minyak tercampur bahan kimia atau oli mesin</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 20px;"></div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h4 style="margin: 0 0 12px;"><i class="fas fa-map-marked-alt"></i> Coverage Map</h4>
+            <div class="map-placeholder">
+              <i class="fas fa-map" style="font-size: 2rem; margin-right: 10px;"></i>
+              Peta Interaktif — Jabodetabek & kota besar
+            </div>
+          </div>
+          <div class="card">
+            <h4 style="margin: 0 0 12px;"><i class="fas fa-location-arrow"></i> Drop-Point & Opsi Serah</h4>
+            <p style="color: var(--muted); margin: 0 0 12px;">Jika jemput belum tersedia, kamu bisa serahkan ke drop-point terdekat:</p>
+            <ul style="color: var(--muted); padding-left: 18px; margin-bottom: 12px;">
+              <li>Kebon Jeruk • Cipondoh • Matraman • Antapani</li>
+              <li>Cikupa • Cakung • ...</li>
+            </ul>
+            <a href="#drop" style="font-weight: 800; color: var(--accent);">
+              <i class="fas fa-arrow-right"></i> Lihat semua drop-point
+            </a>
+          </div>
+          <div class="card">
+            <h4 style="margin: 0 0 12px;"><i class="fas fa-calendar-alt"></i> Pickup Scheduler</h4>
+            <p style="color: var(--muted); margin: 0 0 15px;">Pilih slot, kurir konfirmasi via WhatsApp, verifikasi & pembayaran saat pickup.</p>
+            <a class="btn btn-primary" href="#cta">
+              <i class="fas fa-calendar-check"></i> Jadwalkan Jemput
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ & RESOURCES SECTION -->
+      <section class="section" id="resources">
+        <div class="resources-grid">
+          <div class="card">
+            <h3 style="margin: 0 0 15px;">Resources & Insights</h3>
+            <div class="resource-cards">
+              <article class="resource-card">
+                <strong>Panduan Menyimpan Minyak</strong>
+                <p>Tips agar minyak tetap diterima dan tidak cepat rusak.</p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h4 style="margin: 0 0 15px;">FAQ</h4>
+            <div class="faq-container">
+              <div class="faq-item">
+                <div class="faq-question">Apa yang tidak diterima?</div>
+                <div class="faq-answer">Minyak tercampur bahan kimia berat, pelarut, atau oli mesin.</div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">Kapan pembayaran dilakukan?</div>
+                <div class="faq-answer">Pembayaran dilakukan setelah verifikasi di lokasi.</div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">Berapa minimal penjemputan?</div>
+                <div class="faq-answer">Kami melakukan penjemputan minimal 40 liter.</div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">Bagaimana cara menjadi mitra?</div>
+                <div class="faq-answer">Hubungi kami via WhatsApp untuk informasi lengkap menjadi mitra JelantahGo.</div>
+              </div>
+              
+              <div class="faq-item">
+                <div class="faq-question">Apakah ada biaya penjemputan?</div>
+                <div class="faq-answer">Tidak ada biaya penjemputan, semua sudah termasuk dalam harga yang ditawarkan.</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CTA SECTION -->
+      <section id="cta" class="section">
+        <div class="card" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 30px;">
+          <div>
+            <h3 style="margin: 0 0 8px;">Siap jual jelantah Anda?</h3>
+            <p style="margin: 0; color: var(--muted);">Pesan jemput sekarang — proses cepat & transparan, pembayaran langsung setelah verifikasi.</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a class="cta" href="https://wa.me/6285183033995?text=Saya%20ingin%20pesan%20jemput%20jelantah">
+              <i class="fab fa-whatsapp"></i> Jemput via WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="#quote">
+              <i class="fas fa-tag"></i> Cek Harga & Jadwal
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-circle" style="margin-bottom: 15px;">JG</div>
+          <p>JelantahGo — solusi cepat jual minyak jelantah Anda. Jemput, verifikasi, dan bayar — mudah dan bertanggung jawab.</p>
+          <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Jl. Kelapa Gading No 2</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="#pricing">Harga</a></li>
+              <li><a href="#coverage">Coverage</a></li>
+              <li><a href="#resources">Resources</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Kontak</h4>
+            <div style="color: var(--muted);">
+              <p style="margin-bottom: 10px;">CS WhatsApp: <a href="https://wa.me/6285183033995" style="color: var(--accent); font-weight: 700;">085183033995</a></p>
+              <p>Email: <a href="mailto:info.jelantahgo@gmail.com" style="color: var(--accent);">info.jelantahgo@gmail.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <div style="color: var(--muted);">© 2025 JelantahGo. All rights reserved.</div>
+          <div class="footer-legal">
+            <a href="#" style="color: var(--muted);">Privacy</a>
+            <a href="#" style="color: var(--muted);">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Floating WhatsApp CTA -->
+  <a class="floating-wa" href="https://wa.me/6285183033995?text=Halo%20JelantahGo%2C%20saya%20ingin%20pesan%20jemput">
+    <i class="fab fa-whatsapp"></i>
+    <div>
+      WhatsApp Sekarang
+      <small>Pesan jemput & dapatkan penawaran</small>
+    </div>
+  </a>
+
+  <!-- Sticky actions (mobile) -->
+  <div class="sticky-actions">
+    <a class="btn btn-primary" href="https://wa.me/6285183033995?text=Saya%20ingin%20pesan%20jemput">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <a class="btn btn-ghost" href="#pricing">
+      <i class="fas fa-tag"></i> Harga
+    </a>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navMenu = document.getElementById('nav-menu');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // ROI calculator with Indonesian currency formatting
+    (function(){
+      const litersInput = document.getElementById('roiLiters');
+      const btn = document.getElementById('roiBtn');
+      const resultEl = document.getElementById('roiResult');
+
+      function pricePerLiter(liters){
+        if (liters >= 200) return 7000;
+        if (liters >= 100) return 6500;
+        if (liters >= 40) return 6000;
+        return 0;
+      }
+
+      function formatIDR(num){
+        return new Intl.NumberFormat('id-ID', { 
+          style: 'currency', 
+          currency: 'IDR', 
+          maximumFractionDigits: 0 
+        }).format(num);
+      }
+
+      function calc(){
+        const liters = Math.max(0, Math.floor(Number(litersInput.value) || 0));
+        
+        if (liters < 40) { 
+          resultEl.textContent = 'Minimal 40 liter untuk penjemputan.'; 
+          return; 
+        }
+
+        const p = pricePerLiter(liters);
+        const revenue = liters * p;
+        const affiliatePerL = 200;
+        const affiliateTotal = liters * affiliatePerL;
+
+        resultEl.textContent = `Estimasi pendapatan: ${formatIDR(revenue)} • Harga: ${formatIDR(p)} /L` +
+          ` • (Komisi afiliasi potensial: ${formatIDR(affiliateTotal)})`;
+      }
+
+      btn.addEventListener('click', calc);
+      litersInput.addEventListener('keydown', function(e){ 
+        if (e.key === 'Enter') calc(); 
+      });
+    })();
+  </script>
+</body>
+</html>
